@@ -4,21 +4,17 @@ import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import os
-import time
-# --- SMART IMPORT BLOCK ---
 import sys
-import os
+import time
 
-# This tells the cloud to look inside the 'src' folder for your other files
+# --- FIXING THE PATHING ERROR ---
+# This ensures the 'src' folder is visible to the system
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
-try:
-    from main import build_model, prepare_data, evaluate_model_full
-except ImportError:
-    # This is a backup in case the first way fails
-    from src.main import build_model, prepare_data, evaluate_model_full
+# Now it will find main.py correctly
+from main import build_model, prepare_data, evaluate_model_full
 from sklearn.model_selection import train_test_split
 
 # --- 1. SMART PATHING ---
